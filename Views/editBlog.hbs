@@ -8,8 +8,14 @@
 </head>
 <body>
     <section>
+
+        {{!-- //title --}}
+
         <h1 class="editTitle">Edit Blog</h1>
         <div>
+
+            {{!-- //edit form --}}
+            
             <form class="editForm" action="/blog/edit" enctype="application/x-www-form-urlencoded" method="post">
             <input type="text" name="id" value="{{blog.id}}" hidden />
             <input type="text" value="{{blog.Title}}" name="title" id=""/>

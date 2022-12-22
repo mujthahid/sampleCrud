@@ -10,12 +10,18 @@
     <section>
 <h1 class="heading">Blogs</h1>
     <div class="createBtn">
+
+        {{!-- //create new blog button --}}
+
         <a href="/blog/create"><button>Create new blog</button></a>
     </div>
 
     <main class="blogArea">
     
      {{#each result}}
+
+{{!-- //blog title and options --}}
+
     <div class="blogClass">
         <h3>{{this.Title}}</h3>
         <div class="btnGrp">

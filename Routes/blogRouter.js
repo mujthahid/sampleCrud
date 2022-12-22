@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const db = require('../database')
 
-
+//getting the homepage
 router.get('/',(req,res)=>{
     let query = db.query('SELECT * FROM blog',(err,result)=>{
         if(err) console.log(err)
@@ -13,10 +13,12 @@ router.get('/',(req,res)=>{
     })
 })
 
+//getting in to create new blog page
 router.get('/blog/create',(req,res)=>{
     res.render('createBlog')
 })
 
+//viewing the selected blog
 router.get('/blog/view/:id',(req,res)=>{
     let id = req.params.id
     let query = db.query('SELECT * FROM blog WHERE id =?',[id],(err,result)=>{
@@ -28,6 +30,7 @@ router.get('/blog/view/:id',(req,res)=>{
     })
 })
 
+//posting newly created blog from the create new blog page
 router.post('/blog/create',(req,res)=>{
     
     let post = {title:req.body.title,content:req.body.content}
@@ -40,6 +43,7 @@ router.post('/blog/create',(req,res)=>{
 
 })
 
+//getting to the edit blog page
 router.get('/blog/edit/:id',(req,res)=>{
 let id = req.params.id;
 let getBlog = db.query('SELECT * FROM blog WHERE id = ?',[id],(err,result)=>{
@@ -51,6 +55,7 @@ let getBlog = db.query('SELECT * FROM blog WHERE id = ?',[id],(err,result)=>{
 })
 })
 
+//editing the existing blog
 router.post('/blog/edit',(req,res)=>{
     
     let updated = db.query(`UPDATE blog SET title = "${req?.body?.title}",
@@ -63,6 +68,7 @@ router.post('/blog/edit',(req,res)=>{
     })
 })
 
+//deleting the existing blog
 router.delete('/blog/delete/:id',(req,res)=>{
 
 let deleted = db.query(`DELETE FROM blog WHERE id =${req.params.id}`,(err,result)=>{
