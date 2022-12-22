@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create blog</title>
+</head>
+<body>
+    <section>
+        <header >
+            <h1 class="crtblgHeader">Create Blog</h1>
+        </header>
+        <div>
+            <form class="createForm" action="/blog/create/" enctype="application/x-www-form-urlencoded" method="POST">
+            
+            <label for="title">Title</label>
+           
+            <input id="title" name="title" type="text" required>
+            
+            <label for="content">Content</label>
+            <textarea  name="content" id="content" cols="75" rows="10"></textarea>
+            <button type="submit">Submit</button>
+            </form>
+        </div>
+
+    </section>
+</body>
+</html>
+
+<style>
+    .crtblgHeader{
+        text-align: center;
+    }
+    .createForm{
+       margin: 10px 10px;
+       padding: 10px 10px;
+        display: flex;
+        flex-direction: column;
+       align-items: center;
+        justify-content: center;
+    }
+
+    #title, #content{
+        margin: 10px 0;
+    }
+</style>

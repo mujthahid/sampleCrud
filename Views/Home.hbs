@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+</head>
+<body>
+    <section>
+<h1 class="heading">Blogs</h1>
+    <div class="createBtn">
+        <a href="/blog/create"><button>Create new blog</button></a>
+    </div>
+
+    <main class="blogArea">
+    
+     {{#each result}}
+    <div class="blogClass">
+        <h3>{{this.Title}}</h3>
+        <div class="btnGrp">
+        <a href="/blog/view/{{this.id}}"><button>View</button></a>
+        <a href="/blog/edit/{{this.id}}"><button>Edit</button></a>
+        <button onclick="handleDelete('{{this.id}}')">Delete</button>
+        
+        </div>
+      
+    </div>
+    {{/each}}
+</main>
+    </section>
+
+</body>
+</html>
+
+<style>
+    .heading, .createBtn{
+        text-align: center;
+        position: relative;
+        margin: 25px 0;
+    }
+    .blogClass{
+        display: flex;
+        flex-direction: column;
+        background-color: antiquewhite;
+        margin: 5px 0;
+        padding: 5px 0;
+        
+        justify-content: center;
+        align-items: center;
+    }
+
+    .blogArea{
+        max-height: 75vh;
+        overflow-y: scroll;
+    }
+</style>
+
+<script>
+    const handleDelete = (id)=>{
+ fetch(`/blog/delete/${id}`,{
+    method: 'DELETE'
+}).then((response)=>{
+    if(response.status == 200) location.reload()
+})
+    }
+</script>
